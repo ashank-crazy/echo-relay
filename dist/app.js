@@ -1,6 +1,6 @@
-import { Game, Ballot, LEVELS, parseCommand } from './engine.js?v=1.0.1';
-import { Scene } from './scene.js?v=1.0.1';
-import { TwitchConnection } from './twitch.js?v=1.0.1';
+import { Game, Ballot, LEVELS, parseCommand } from './engine.js?v=1.0.2';
+import { Scene } from './scene.js?v=1.0.2';
+import { TwitchConnection } from './twitch.js?v=1.0.2';
 
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
@@ -184,13 +184,17 @@ const twitch = new TwitchConnection({
   onStatus(status, text) {
     $('#connection-status').textContent = text;
     $('#connect-status').textContent = text;
-    $('#connection-dot').className = `tiny-dot${status === 'connected' ? ' connected' : status === 'error' ? ' error' : ''}`;
+    $('#connection-dot').className = `tiny-dot${status === 'connected' || status === 'transferring' ? ' connected' : status === 'error' ? ' error' : ''}`;
     if (status === 'connected') {
-      connected = true; mode = 'live'; running = false;
+      // A Twitch-directed transfer never stopped delivering chat, so only a fresh connection stops the clock.
+      if (!connected) {
+        mode = 'live'; running = false;
+        $('#connect-dialog').close();
+        toast('Chat connected. Start the clock when your viewers are ready.');
+      }
+      connected = true;
       $('#connect-label').textContent = `#${twitch.channel}`;
       $('#disconnect-twitch').hidden = false;
-      $('#connect-dialog').close();
-      toast('Chat connected. Start the clock when your viewers are ready.');
     } else if (status === 'connecting' || status === 'reconnecting') { running = false; connected = false; clearBallot(); }
     else if (status === 'error' || status === 'disconnected') {
       connected = false; running = false;

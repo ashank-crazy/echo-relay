@@ -82,7 +82,8 @@ export class TwitchConnection {
         try {
           const parsed = new URL(next);
           if (parsed.protocol !== 'wss:' || parsed.hostname !== 'eventsub.wss.twitch.tv') throw new Error();
-          this.onStatus('reconnecting', 'Twitch is moving this connection…');
+          // The old socket keeps delivering events until the new one is welcomed, so this is not an interruption.
+          this.onStatus('transferring', 'Twitch is moving this connection…');
           this.open(next, true, generation);
         } catch { this.fail('Twitch supplied an invalid reconnect address. Please reconnect.'); }
       } else if (type === 'revocation') {

@@ -61,6 +61,19 @@ test('Twitch-directed reconnection transfers subscriptions rather than duplicati
   assert.equal(h.calls.filter(c => c.init.method === 'POST').length, 4);
   assert.equal(socket.readyState, 3);
   assert.equal(h.connection.current, replacement);
+  // The game keeps its clock running through a transfer, so it must never look like an interruption.
+  assert.deepEqual(h.statuses.map(s => s.status), ['connecting', 'connected', 'transferring', 'connected']);
+});
+test('chat sent to the old socket during a transfer is still delivered once', async t => {
+  const h = harness(t), socket = await connect(h);
+  await socket.emit('session_reconnect', { session: { reconnect_url: 'wss://eventsub.wss.twitch.tv/ws?reconnect=test' } });
+  const replacement = FakeSocket.all.at(-1);
+  const payload = { subscription: { type: 'channel.chat.message' }, event: { broadcaster_user_id: 'broadcaster-1', chatter_user_id: 'viewer-1', chatter_user_name: 'Ada', message_id: 'chat-1', message: { text: '!right' } } };
+  await socket.emit('notification', payload, 'event-1');
+  await replacement.emit('session_welcome', { session: { id: 'session-2', keepalive_timeout_seconds: 10 } });
+  await replacement.emit('notification', payload, 'event-1');
+  assert.equal(h.chats.length, 1);
+  assert.equal(h.statuses.some(s => s.status === 'reconnecting'), false);
 });
 test('reconnect URLs cannot send the connection to a different service', async t => {
   const h = harness(t), socket = await connect(h);

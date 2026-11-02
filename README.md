@@ -58,7 +58,7 @@ Each Twitch user ID has one vote per beat. A later command replaces that viewer'
 
 Switches **A** and **B** open their matching doors while occupied by the present or an echo. Echoes replay recorded positions, one per beat, and then hold the final position. They do not get resimulated against changed doors. A blocked move still consumes a beat. Reaching the beat limit automatically records an echo and rewinds. There are three echo slots; the fourth recording replaces the oldest.
 
-The clock pauses when the connection is interrupted or reconnected. The host explicitly resumes it after the network recovers. Duplicate Twitch deliveries are ignored. Moderator deletions remove the corresponding pending ballot entry; clearing chat clears the ballot. Previously executed game actions are not rolled back by moderation.
+The clock pauses when the connection is interrupted. The host explicitly resumes it after the network recovers. When Twitch moves the connection to another server, chat keeps flowing, so the clock keeps running. Duplicate Twitch deliveries are ignored. Moderator deletions remove the corresponding pending ballot entry; clearing chat clears the ballot. Previously executed game actions are not rolled back by moderation.
 
 ## Stream and OBS
 
