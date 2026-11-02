@@ -8,6 +8,8 @@ Time capsules carry those recorded selves between streams: one community can lea
 
 Built with OpenAI Codex for the Codex × TwitchCon Hackathon, November 2, 2026.
 
+[GitHub repository](https://github.com/ashank-crazy/echo-relay) · [Hosted preview (private)](https://echo-relay-ashank.codexcirclejerk.chatgpt.site)
+
 ## Play immediately
 
 Requires Python 3. No package installation, API key, build, or paid service is needed for local play.
