@@ -32,7 +32,9 @@ Three chambers are included:
 
 The game uses Twitch's recommended **EventSub WebSocket** transport and the Helix API. It reads commands and moderation events. It never posts in chat.
 
-1. Open the [Twitch developer console](https://dev.twitch.tv/console/apps/create) and register a **Public** application. A client ID is public configuration; do not provide a client secret.
+Before registering an app, verify your Twitch account’s email address and enable two-factor authentication. See [Twitch’s registration requirements](https://dev.twitch.tv/docs/authentication/register-app/).
+
+1. Open the [Twitch developer console](https://dev.twitch.tv/console/apps/create) and register a **Confidential** application for the browser implicit OAuth flow. Twitch’s **Public** client type is restricted to device authorization. The client ID itself is public configuration; this flow does not use a client secret.
 2. Add the exact OAuth redirect URI displayed inside the game's **Connect Twitch → First time?** instructions. For the local URL above, it is `http://localhost:4319/`. On a hosted version, register its exact HTTPS URL, including the trailing slash.
 3. Enter your channel and public client ID in **Connect Twitch**, then click **Sign in with Twitch**. The only permission requested is `user:read:chat`.
 4. After authorization, the game validates the token, resolves the channel, and subscribes to chat plus message-deletion and chat-clear events.
