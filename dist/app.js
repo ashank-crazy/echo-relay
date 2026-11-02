@@ -1,6 +1,6 @@
-import { Game, Ballot, LEVELS, ACTIONS, parseCommand } from './engine.js';
-import { Scene } from './scene.js';
-import { TwitchConnection } from './twitch.js';
+import { Game, Ballot, LEVELS, parseCommand } from './engine.js?v=1.0.1';
+import { Scene } from './scene.js?v=1.0.1';
+import { TwitchConnection } from './twitch.js?v=1.0.1';
 
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
