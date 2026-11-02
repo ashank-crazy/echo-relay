@@ -1,0 +1,13 @@
+{
+  "name": "echo-relay",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A Twitch time-loop puzzle where chat cooperates with echoes of its own past.",
+  "scripts": {
+    "start": "python3 -m http.server 4319 --directory dist --bind 127.0.0.1",
+    "test": "node --test tests/*.test.js",
+    "check": "node --check dist/app.js && node --check dist/engine.js && node --check dist/scene.js && node --check dist/twitch.js"
+  },
+  "license": "MIT"
+}
