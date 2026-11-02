@@ -8,7 +8,7 @@ Time capsules carry those recorded selves between streams: one community can lea
 
 Built with OpenAI Codex for the Codex × TwitchCon Hackathon, November 2, 2026.
 
-[GitHub repository](https://github.com/ashank-crazy/echo-relay) · [Hosted preview (private)](https://echo-relay-ashank.codexcirclejerk.chatgpt.site)
+[GitHub repository](https://github.com/ashank-crazy/echo-relay) · [Play Echo Relay](https://echo-relay-ashank.codexcirclejerk.chatgpt.site)
 
 ## Play immediately
 

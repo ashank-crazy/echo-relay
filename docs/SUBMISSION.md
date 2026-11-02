@@ -63,7 +63,7 @@ Community-authored chambers, an authenticated capsule library, and an optional a
 - **Repository URL:** https://github.com/ashank-crazy/echo-relay. If private, share it with the judging account specified in the official rules.
 - **Demo video URL:** record real footage on Twitch, include how Codex was used, keep it below three minutes, and upload it to YouTube with a watchable public or unlisted link.
 - **Codex session ID:** confirm using `/status` in the main build chat. The desktop build thread ID returned in this session is `01a19bce-8df8-75e0-8011-aef9a670b13e`.
-- **Working demo:** the hosted Site starts private. Local play works from the repository without sign-in. Decide whether to share the hosted Site for judging.
+- **Working demo:** https://echo-relay-ashank.codexcirclejerk.chatgpt.site is public for viewers and judges. Local play also works from the repository without sign-in.
 - **Final acceptance check:** connect an authorized Twitch channel and have a second account submit commands on stream. Automated Twitch checks use a mock transport and do not substitute for this recording.
 - **Entrant details and submission:** confirm eligibility, teammates, ownership, and the exact form fields yourself before submitting. The project has not been entered on Devpost.
 
